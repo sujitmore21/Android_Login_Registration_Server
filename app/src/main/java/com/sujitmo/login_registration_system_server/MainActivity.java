@@ -2,34 +2,34 @@ package com.sujitmo.login_registration_system_server;
 
 
 import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences pref;
+    private FrameLayout frameLayout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         pref = getPreferences(0);
-        initFragment();
+
+        frameLayout =findViewById(R.id.fragment_frame);
+        setFragment(new RegisterFragment());
     }
 
-    private void initFragment(){
-        Fragment fragment;
-        if(pref.getBoolean(Constants.IS_LOGGED_IN,false)){
-            fragment = new ProfileFragment();
-        }else {
-            fragment = new Fragment();
-        }
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_frame,fragment);
-        ft.commit();
+    private void setFragment(RegisterFragment fragment){
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(frameLayout.getId(),fragment);
+        fragmentTransaction.commit();
     }
+
 
 }
