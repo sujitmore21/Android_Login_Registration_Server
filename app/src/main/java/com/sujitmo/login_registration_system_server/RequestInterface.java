@@ -9,7 +9,7 @@ import retrofit2.http.POST;
 
 public interface RequestInterface {
 
-    @POST("android-login-register/")
+    @POST("hello/")
     Call<ServerResponse> operation(@Body ServerRequest request);
 
 }

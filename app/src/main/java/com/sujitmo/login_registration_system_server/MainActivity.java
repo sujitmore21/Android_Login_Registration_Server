@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         pref = getPreferences(0);
 
         frameLayout =findViewById(R.id.fragment_frame);
-        setFragment(new RegisterFragment());
+        setFragment(new LoginFragment());
     }
 
-    private void setFragment(RegisterFragment fragment){
+    private void setFragment(LoginFragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(frameLayout.getId(),fragment);
         fragmentTransaction.commit();
